@@ -1,0 +1,523 @@
+
+/* Archivo: estilos.css */
+
+/* 1. QUITAR EFECTO DE AGRANDAMIENTO EN NAV */
+nav ul li a {
+    color: #ffffff;
+    font-size: 25px !important;
+    font-weight: 200;
+    text-decoration: none;
+    transition: none; /* eliminamos la transicion */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+nav ul li a:hover {
+    /* Antes agrandaba el texto, ahora solo cambiamos color si deseas */
+    color: #ddd;
+    text-decoration: underline;
+    /* font-size: 25px; igual que el normal */
+}
+
+/* 2. HACER RESPONSIVO EL NAVBAR */
+.menu {
+    background: #525050;
+    height: auto; /* permite altura dinámica */
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 30px;
+    }
+}
+
+/* 3. AJUSTAR CONTAINERS PARA QUE SE ADAPTEN A MÓVILES */
+.container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 15px;
+    margin: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap; /* necesario */
+    justify-content: space-between;
+
+}
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+
+/* 4. OPCIONAL: QUITAR SOMBRAS ROJAS DE COMPONENTES */
+.componente {
+    box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.3); /* antes era rojo */
+}
+
+          .img {
+            border-radius: 50%;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-menu {
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .dropdown-menu a {
+            color: #000;
+        }
+        header {
+            background-color: #343a40;
+            background: none;
+        }  
+    body{
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    }
+    #nosotros,#componentes,#blog{
+        background-color: rgb(233, 233, 233);
+        padding: 30px 0 90px 0;
+    }
+    /* #videos, #videojuegos{
+        padding: 10px 0 170px 0;
+    } */
+    header{
+        /* background: linear-gradient( rgba(148, 0, 0, 0.62),rgba(134, 132, 132, 0.5)),url(img/portada.jpg); */
+        background-size: cover;
+        display: inline-block;
+        width: 100%;
+    }
+    header .container{
+        display: flex;
+        justify-content: space-between;
+    }
+    /* .container{
+        display: flex;
+        justify-content: space-between;
+    } */
+    /* ul{
+        display: flex;
+    }
+    
+    header ul{
+        display: flex;
+    }
+    ul li{
+        list-style: none;
+        margin: 15px;
+    }
+    header ul li{
+        list-style: none;
+        margin: 15px;
+        
+    } */
+    .logo{
+        /* color: rgba(255, 136, 136, 0.835); */
+        font-size: 40px;
+        font-weight: 500;
+        margin-top: 22px;
+      
+    
+    }
+    /* .container{
+        max-width: 1800px;
+        width: 95%;
+        margin: auto;
+    } */
+    /* nav ul li a{
+        color:white;
+        font-size: 25px;
+        font-weight: 200;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    nav ul li a:hover{
+        color:  rgba(170, 98, 98, 0.835);
+
+        font-size: 26px;
+    } */
+    /* .menu{
+        background: #525050;
+        height: 85px;
+        width: 100%;
+        margin-bottom: 15px;
+        display: flex;
+    } */
+    #title-container-flex{
+        display: flex;
+        justify-content: center;
+        margin-top: 18vh;
+        margin-bottom: 18vh;
+        width: 100%;
+    }
+    h1{
+        font-size: 60px;
+        color:white;
+        margin: 0;
+        font-weight: 400;
+    
+    }
+    h2{
+        font-size: 25px;
+        color: white;
+        font-weight: 400;
+    }
+    .title-container{
+        text-align: center;
+    }
+    .title-container a, #nosotros a,#blog a,#contacto input[type="submit"]{
+        font-size: 20px;
+        color: black;
+        background:  #252525;
+        padding: 14px 24px;
+        width: 128px;
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: 600;
+        border-radius: 4px;
+        text-decoration: none;
+        text-align: center;
+    }
+    .title-container a:hover ,#blog a:hover,#nosotros a:hover {
+    background-color: #272122c4;
+    }
+    /* /SECCION NOSOTROS/ */
+    h3{
+        text-align: center;
+        font-size: 55px;
+        font-weight: 400;
+    }
+    .nosotros-container{
+        display: flex;
+        justify-content: space-around;
+    }
+    .nosotros-image{
+        width: 105%;
+    }
+    .nosotros-image img{
+        width: 95%;
+    }
+    .nosotros-text{
+        text-align: justify;
+        width: 45%;
+    }
+
+    /* /videojuegos/ */
+    .juegos-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    #videojuegos .item{
+        width: 28%;
+        text-align: center;
+    }
+    #videojuegos ul li{
+        list-style: none;
+    }
+    #videojuegos ul li:nth-child(2){
+        font-weight: bold;
+        font-size: 25px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+    #videojuegos ul li:nth-child(3){
+        font-size: 19px;
+        line-height: 31px;
+    }
+    #videojuegos ul li i{
+        font-size: 80px;
+        margin-bottom: 15px;
+        color: rgb(48, 45, 245);
+    }
+    /* /COMPONENTES/ */
+    .componentes-container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        color: white;
+        margin-bottom: 15px;
+    }
+    .componente{
+        width: 24%;
+        padding: 34px 30px 38px 30px;
+        border-radius: 10px;
+        margin-bottom: 40px;
+        position: block;
+        /* background: linear-gradient( rgba(101, 0, 0, 0.209),rgba(236, 129, 129, 0.733));
+        box-shadow: 0 12px 30px 0 rgba(100, 1, 1, 0.812); */
+        display: flex;
+        justify-content: center; /* Centra horizontalmente */
+        align-items: center;
+    }
+    .photo{
+        /* width: 100%;
+        height: 250px; */
+        background-size: cover;
+
+        max-width: 100%; /* Evita que la imagen se salga del contenedor */
+        height: auto;
+    }
+    .componente h4{
+        font-size: 30px;
+        margin: 20px;
+        color: black;
+        text-align: center;
+    }
+    .componente p{
+        margin-bottom: 20px;
+        height: 70px;
+        color: rgb(44,44,44);
+        font-size: 18px;
+        text-align: justify;
+    }
+    .componente a{
+        float: right;
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.774);
+        margin-top: 30px;
+    }
+
+    /*CONTACTO*/
+    #contacto form{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 77%;
+        margin: auto;
+    }
+    input[type="text"], input[type="email"], input[type="number"], input[type="password"]{
+        width: 45%;
+        margin-bottom: 15px;
+        padding: 18px;
+        border: 0;
+        border-bottom: 2px solid rgb(183, 235, 248);
+        font-size: 20px;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    textarea{
+        width: 45%;
+        margin-bottom: 15px;
+        padding: 18px;
+        border: 0;
+        border-bottom: 2px solid rgb(183, 235, 248);
+        font-size: 20px;
+        font-family: 'Oswald', sans-serif;
+    }
+    #contacto textarea{
+    padding: 18px 0;
+    border: 0;
+    border-bottom: 2px solid rgb(183, 235, 248);
+    font-size: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+    }
+    #contacto input[type="submit"]{
+        width: 230px;
+        margin: auto;
+        border: 0;
+        box-shadow: rgb(0, 0,0,1.22)0px 2px 6px;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+    .contacto-info{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 60px;
+    }
+    .contacto-info i{
+        vertical-align: middle;
+        margin-right: 10px;
+       
+    }
+    .contacto-info p{
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .mail i{
+        font-size: 28px;
+        color: blue;
+    }
+    /*CONTACTO*/
+    footer{
+        /* background: #5D1B23; */
+        padding: 40px 0;
+        text-align: center;
+        margin-top: 40px;
+        
+    }
+    footer .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    footer i{
+        font-size: 50px;
+        margin: 0 40px;
+    }
+    footer p{
+        color: white;
+        margin-top: 40px;
+        font-size: 22px;
+        
+    }
+    .login{
+        text-align:justify;
+      
+    }
+
+    /* NUEVO */
+    /* General Styles */
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Ajustes para imágenes */
+.card-img-top {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* Espaciado entre productos */
+.card-body {
+    padding: 15px;
+}
+
+/* Fondo y márgenes de los productos */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Diseño en el header */
+header {
+    background-color: #343a40;
+    padding: 10px 0;
+    color: #fff;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+    /* text-transform: uppercase; */
+}
+
+/* Estilo para el footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 40px 0;
+}
+
+/* Iconos en footer */
+footer .fa {
+    color: white;
+    font-size: 2rem;
+    margin: 0 15px;
+    /* transition: color 0.3s; */
+}
+
+footer .fa:hover {
+    color: #ddd;
+}
+
+/* Ajustes de espaciado */
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+} 
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 767px) {
+    .card-img-top {
+        max-height: 200px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    footer .fa {
+        font-size: 1.5rem;
+    }
+}
+
+/* Media Queries para pantallas medianas */
+@media (max-width: 992px) {
+    h2 {
+        font-size: 1.7rem;
+    }
+    
+    .card-img-top {
+        max-height: 220px;
+    }
+} 
+
+/* Optimización para tarjetas más grandes */
+@media (min-width: 1200px) {
+    .card-img-top {
+        max-height: 300px;
+    }
+}
+/* new */
+/* Estilo para el encabezado con fondo tinto */
+.header-title {
+    /* background-color: #8B0000; Fondo tinto */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-title h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+.card-title, .card-text {
+    color: black; 
+}
+

@@ -1,0 +1,151 @@
+body{
+    /* background-color: rgb(253, 225, 230); */
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 200px;
+
+    }
+    .inicio{
+    /* color:  #5D1B23; */
+    margin: 10px;
+}
+
+.marca{
+        font-size: 20px;
+        font-weight: 200;
+        text-align: center;
+        margin-top: 100px;
+}
+
+.inicio_c{
+    /* color: #5D1B23; */
+    margin-right: 40px;
+   
+}
+.componentes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Espacio entre tarjetas */
+    padding: 20px;
+}
+
+.componente {
+    background: linear-gradient(145deg, #f7e7ea, #f9d7dd);
+    border-radius: 15px;
+    padding: 30px; /* Más espacio dentro de las tarjetas */
+    text-align: center;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+    width: 300px; /* Ancho más grande */
+    height: 400px; /* Altura fija */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.componente:hover {
+    transform: translateY(-10px);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.6);
+}
+
+.componente img {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 200px; /* Ajuste de altura de la imagen */
+    object-fit: contain; /* Mantiene las proporciones */
+    margin-bottom: 20px;
+}
+
+.componente a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px; /* Texto más grande */
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .componente {
+        width: 100%;
+        max-width: 400px; /* Aumenta el tamaño en dispositivos móviles */
+    }
+
+    .componente img {
+        width: 80%;
+    }
+}
+.componentes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+}
+
+.componente {
+    background: linear-gradient(145deg, #f7e7ea, #f9d7dd);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+    width: 100%;
+    max-width: 300px; /* Limita el ancho máximo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.componente:hover {
+    transform: translateY(-10px);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.6);
+}
+
+.componente img {
+    width: 100%;
+    height: auto; /* Ajusta la altura automáticamente */
+    object-fit: cover; /* Cubre el área de la imagen sin deformarla */
+    margin-bottom: 15px;
+}
+
+.componente h4, .componente h5 {
+    margin: 10px 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .componente {
+        max-width: 100%; /* Ocupa todo el ancho disponible en pantallas pequeñas */
+    }
+
+    .titulo {
+        font-size: 24px; /* Reduce el tamaño del texto en pantallas pequeñas */
+    }
+
+    #carouselExampleIndicators {
+        max-height: 300px; /* Ajusta la altura del carrusel en dispositivos móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .componente {
+        padding: 15px;
+    }
+
+    .titulo {
+        font-size: 20px; /* Reduce aún más el tamaño del texto en móviles */
+    }
+}
+
+
