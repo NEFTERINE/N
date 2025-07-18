@@ -2,10 +2,9 @@
 session_start();
 
 require_once('menu.php');
-require_once('clases/Usuario.php');
+require_once('clases/Lider_Coordinador.php');
 
-// Crear una instancia de la clase Usuario
-$usuario = new Usuario();
+$lider = new Lider_coordinador();
 
 // Verifica si el parámetro 'id_usuario' está presente en la URL
 if (isset($_GET['pk_usuario'])) {

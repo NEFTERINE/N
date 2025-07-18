@@ -24,6 +24,8 @@ if ($num_rows <= 0) {
     $_SESSION['pk_usuario'] = $datos['pk_usuario'];
     $_SESSION['type'] = $datos['type'];
     $_SESSION['correo'] = $correo;
+    // echo "Tipo de usuario: " . ($_SESSION['type'] ?? 'no definido');
+
     // $_SESSION['contrasena'] = $contrasena;
 
     // Redirección según tipo de usuario

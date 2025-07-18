@@ -1,8 +1,7 @@
 
-/* Archivo: estilos.css */
 
-/* 1. QUITAR EFECTO DE AGRANDAMIENTO EN NAV */
 nav ul li a {
+    padding: 10px;
     color: #ffffff;
     font-size: 25px !important;
     font-weight: 200;
@@ -15,13 +14,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    /* Antes agrandaba el texto, ahora solo cambiamos color si deseas */
     color: #ddd;
     text-decoration: underline;
     /* font-size: 25px; igual que el normal */
 }
 
-/* 2. HACER RESPONSIVO EL NAVBAR */
+/* HACER RESPONSIVO EL NAVBAR */
 .menu {
     background: #525050;
     height: auto; /* permite altura dinámica */
@@ -48,7 +46,7 @@ nav ul li a:hover {
     }
 }
 
-/* 3. AJUSTAR CONTAINERS PARA QUE SE ADAPTEN A MÓVILES */
+/* AJUSTAR CONTAINERS PARA QUE SE ADAPTEN A MÓVILES */
 .container {
     max-width: 100%;
     width: 100%;
@@ -69,7 +67,7 @@ nav ul li a:hover {
 }
 
 
-/* 4. OPCIONAL: QUITAR SOMBRAS ROJAS DE COMPONENTES */
+/* QUITAR SOMBRAS ROJAS DE COMPONENTES */
 .componente {
     box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.3); /* antes era rojo */
 }
@@ -137,9 +135,9 @@ nav ul li a:hover {
     } */
     .logo{
         /* color: rgba(255, 136, 136, 0.835); */
-        font-size: 40px;
+        /* font-size: 40px;
         font-weight: 500;
-        margin-top: 22px;
+        margin-top: 22px; */
       
     
     }

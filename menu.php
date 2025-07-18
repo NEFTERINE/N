@@ -14,13 +14,13 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/estilos.css?a=14">
+    <link rel="stylesheet" href="css/estilos.css?a=14">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <title></title>
     <style>
-
+        /* Tu estilo personalizado */
     </style>
 
 </head>
@@ -37,46 +37,31 @@ if (session_status() === PHP_SESSION_NONE) {
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <?php
                         if (isset($_SESSION['pk_usuario'])) {
+                            echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Inicio</a></li>';
 
-                            echo  '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Inicio</a></li>';
-                            
-                            if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3])) {
-
-                                
-                                echo  '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Otros</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="formulario_persona.php">Nuevo Usuario</a></li>
-                                    <li><a class="dropdown-item" href="formulario_datos.php">Datos</a></li>
-                                    <li><a class="dropdown-item" href="lista_usuarios.php">Lista Usuario</a></li>';
-
-                                echo '</ul></li><li class="nav-item"><a class="nav-link" href="admin.php"></a></li></ul>';
-
-                            }
-                            else if (isset($_SESSION['type']) && in_array($_SESSION['type'], [4, 5])) {
-
-                                echo  '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Otros</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="formulario_cliente.php">Cliente</a></li>';
-
-                                echo '</ul></li><li class="nav-item"><a class="nav-link" href="admin.php"></a></li></ul>';
-                            }
-
+                            // *** ELIMINA LAS SIGUIENTES LÍNEAS COMPLETAMENTE ***
+                            // if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3])) {
+                            //     echo '</ul></li><li class="nav-item"><a class="nav-link" href="admin.php"></a></li></ul>';
+                            // }
+                            // else if (isset($_SESSION['type']) && in_array($_SESSION['type'], [4, 5])) {
+                            //     echo '</ul></li><li class="nav-item"><a class="nav-link" href="admin.php"></a></li></ul>';
+                            // }
+                            // ************************************************
                         }
                         ?>
-   
+                    </ul>
                     <ul class="navbar-nav ms-auto">
                         <?php
                         if (isset($_SESSION['pk_usuario'])) {
-                           
                             // Si el usuario está logueado
                             echo '<li class="nav-item"><a class="nav-link" href="perfil.php"><i class="fa-solid fa-user" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil"></i></a></li>';
-                            // Mostrar el link para administrar si es un usuario administrador
-                            if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3])) {
+                            // Mostrar el link para administrar si es un usuario administrador (este es el correcto)
+                            if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3, 5])) {
                                 echo '<li class="nav-item"><a class="nav-link" href="admin.php"><i class="fa-solid fa-gear" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Administración"></i></a></li>';
                             }
                         } else {
                             // Si el usuario NO está logueado
-                            // echo '<li class="nav-item"><a class="nav-link" href="login.php"><i class="fa-solid fa-cart-shopping" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito"></i></a></li>';
+                            // echo '<li class="nav-item"><a class="nav-link" href="login.php"><i class="fa-solid fa-cart-shopping" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carrito"></i></a></li>'; // Esto parece ser un comentario o código no usado
                             echo '<li class="nav-item"><a class="nav-link" href="login.php"><i class="fa-solid fa-user" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil"></i></a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="login.php"><i class="fa-solid fa-arrow-right-to-bracket" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar Sesión"></i></a></li>';
                         }
@@ -98,5 +83,4 @@ if (session_status() === PHP_SESSION_NONE) {
     </script>
 
 </body>
-
 </html>

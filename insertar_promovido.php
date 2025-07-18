@@ -1,27 +1,34 @@
 <?php
-require_once('clases/Cliente.php');
+require_once('clases/Promovido.php');
 
-$cliente = new Cliente();
+// Validación simple
+if (
+    isset($_POST['fk_persona']) &&
+    isset($_POST['fk_promotor'])
+) {
+    
+    $fk_persona     = $_POST['fk_persona'];
+    $fk_promotor   = $_POST['fk_promotor'];
 
-$nombres     = $_POST['nombres'];
-$a_paterno   = $_POST['a_paterno'];
-$a_materno   = $_POST['a_materno'];
-$edad        = $_POST['edad'];
-$fecha_nac   = $_POST['fecha_nac'];
-$telefono    = $_POST['telefono'];
-$direccion   = $_POST['direccion'];
+    $pro = new Promovido();
 
-$id_persona = $cliente->insertar_C_U($nombres, $a_paterno, $a_materno, $edad, $fecha_nac, $telefono, $direccion);
+    $respuesta = $pro->insertar($fk_persona, $fk_promotor);
 
-if ($id_persona) {
-    // Aquí puedes guardar el ID en sesión o pasarlo a la siguiente pantalla
-    session_start();
-    $_SESSION['pk_persona'] = $id_persona;
-
-    echo "<script>alert('Persona guardada. Ahora crea el usuario.');
-          window.location.href = 'formulario_promovido.php';</script>";
+    if ($respuesta) {
+        echo "<script>
+            alert('Promovido guardado correctamente');
+            window.location.href = 'lista_promovido.php';
+        </script>";
+    } else {
+        echo "<script>
+            alert('Error al guardar los datos');
+            window.location.href = 'formulario_promovido.php';
+        </script>";
+    }
 } else {
-    echo "<script>alert('Error al guardar persona.');
-          window.location.href = 'formulario_cliente.php';</script>";
-}
+    echo "<script>
+        alert('Faltan datos por completar');
+        window.location.href = 'formulario_promovido.php';
+    </script>";
+}vido
 ?>

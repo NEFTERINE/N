@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalablre=no">
-    <title>Persefone Eternity</title>
+
+    <title>Inicio</title>
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/estilos.css?a=13">
     <link rel="stylesheet" href="css/style.css?r=8">
@@ -18,10 +19,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-    
-</header>
-<?php require_once("menu.php") ?>
+<?php 
+require_once("menu.php");
+require_once("calendario.php");
+require_once("grafica.php");
+
+?>
+<br>
 
 <footer>
     <div class="container">

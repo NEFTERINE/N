@@ -33,6 +33,11 @@ $usuario = new Usuario();
         <label>Contraseña:</label><br>
         <input class="form-control" type="password" name="contraseña" required><br>
 
+        <div class="form-check mb-3">
+        <label for="">Ver contraseña</label>
+        <input class="form-check-input" type="checkbox" onclick="contraseña.type = this. checked ? 'text' : 'password'">
+        </div>
+
         <label>Tipo de Usuario:</label><br>
         <select name="type" class="form-control" required>
             <option value="">Selecciona una opción</option>

@@ -2,7 +2,7 @@
 require_once('menu.php');
 require_once('clases/Lider_Coordinador.php');
 $lider = new Lider_coordinador();
-$respuesta = $lider->mostrarL();
+$respuesta = $lider->mostrarC();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $respuesta = $lider->mostrarL();
     <div class="container">
         <div class="col-8 offset-2">
             <br><br><br><br><br><br><br>
-            <h2 class="titulo">Gestión de Lideres</h2><br><br>
+            <h2 class="titulo">Gestión de Coordinadores</h2><br><br>
             <table class="table table-hover">
                 <tr>
                     <th>Persona</th>
@@ -50,14 +50,14 @@ $respuesta = $lider->mostrarL();
                         <td><?= $fila['nom_rol'] ?></td>
                         <td><?= $fila['municipio']?></td>
                         <td>
-                            <a href="editar_lider_coordinador.php?pk_lider_coordinador=<?= $fila['pk_lider_coordinador'] ?>" class="btn btn-warning">Editar</a>
+                            <a href="editar_coordinador.php?pk_lider_coordinador=<?= $fila['pk_lider_coordinador'] ?>" class="btn btn-warning">Editar</a>
                         </td>
                         <td>
                             <?php
                             if ($fila['estatus_lc'] == 1) {
-                                echo '<a href="eliminar_lider.php?pk_lider_coordinador=' . $fila['pk_lider_coordinador'] . '" class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar?\')">Eliminar</a>';
+                                echo '<a href="eliminar_coordinador.php?pk_lider_coordinador=' . $fila['pk_lider_coordinador'] . '" class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar?\')">Eliminar</a>';
                             } else {
-                                echo '<a href="activar_lider.php?pk_lider_coordinador=' . $fila['pk_lider_coordinador'] . '" class="btn btn-success">Activar</a>';
+                                echo '<a href="activar_coordinador.php?pk_lider_coordinador=' . $fila['pk_lider_coordinador'] . '" class="btn btn-success">Activar</a>';
                             }
                             ?>
                         </td>
@@ -66,7 +66,7 @@ $respuesta = $lider->mostrarL();
                 }
                 ?>
             </table><br><br><br>
-            <a class="btn btn-info" href="formulario_lider.php">Agregar Nuevo Lider</a>
+            <a class="btn btn-info" href="formulario_coordinador.php">Agregar Nuevo Lider</a>
         </div>
     </div>
     

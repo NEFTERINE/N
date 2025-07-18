@@ -61,7 +61,7 @@ $respuesta = $promovido->mostrartodo();
                 }
                 ?>
             </table><br><br><br>
-            <a class="btn btn-info" href="formulario_promovido.php">Agregar persona</a>
+            <a class="btn btn-info" href="formulario_persona.php">Agregar persona</a>
         </div>
     </div>
 </body>

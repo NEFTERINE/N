@@ -1,8 +1,8 @@
 <?php 
 require_once('menu.php');
-require_once('clases/Lider_Coordinador.php');
-$lider = new Lider_coordinador();
-$respuesta = $lider->mostrarL();
+require_once('clases/Promotor.php');
+$prom = new Promotor();
+$respuesta = $prom->mostrarP();
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ $respuesta = $lider->mostrarL();
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <title>Gestión de Usuarios</title>
+    <title>Gestión de Promotores</title>
 
     <style>
         .titulo {
@@ -32,13 +32,12 @@ $respuesta = $lider->mostrarL();
     <div class="container">
         <div class="col-8 offset-2">
             <br><br><br><br><br><br><br>
-            <h2 class="titulo">Gestión de Lideres</h2><br><br>
+            <h2 class="titulo">Gestión de Promotor</h2><br><br>
             <table class="table table-hover">
                 <tr>
                     <th>Persona</th>
-                    <th>Tipo</th>
                     <th>Rol</th>
-                    <th>Territorio</th>
+                    <th>Coordinador</th>
                     <th colspan="2">Opciones</th>
                 </tr>
                 <?php
@@ -46,18 +45,15 @@ $respuesta = $lider->mostrarL();
                 ?>
                     <tr>
                         <td><?= $fila['nombres']." ".$fila['ap_paterno']." ".$fila['ap_materno'] ?></td>
-                        <td><?= $fila['tipo'] ?></td>
                         <td><?= $fila['nom_rol'] ?></td>
-                        <td><?= $fila['municipio']?></td>
+                        <td><?= $fila['nombre_coordinador'] ?></td>
                         <td>
-                            <a href="editar_lider_coordinador.php?pk_lider_coordinador=<?= $fila['pk_lider_coordinador'] ?>" class="btn btn-warning">Editar</a>
+                             <a href="editar_promotor.php?id=<?= htmlspecialchars($fila['pk_promotor']) ?>" class="btn btn-warning">Editar</a>
                         </td>
                         <td>
                             <?php
                             if ($fila['estatus_lc'] == 1) {
-                                echo '<a href="eliminar_lider.php?pk_lider_coordinador=' . $fila['pk_lider_coordinador'] . '" class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar?\')">Eliminar</a>';
-                            } else {
-                                echo '<a href="activar_lider.php?pk_lider_coordinador=' . $fila['pk_lider_coordinador'] . '" class="btn btn-success">Activar</a>';
+                                echo '<a href="eliminar_promotor.php?pk_promotor=' . $fila['pk_promotor'] . '" class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar?\')">Eliminar</a>';
                             }
                             ?>
                         </td>
@@ -66,7 +62,9 @@ $respuesta = $lider->mostrarL();
                 }
                 ?>
             </table><br><br><br>
-            <a class="btn btn-info" href="formulario_lider.php">Agregar Nuevo Lider</a>
+            <a class="btn btn-info" href="formulario_promotor.php">Agregar nuevo Promotor</a>
+            
+            <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
         </div>
     </div>
     

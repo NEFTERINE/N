@@ -1,27 +1,36 @@
 <?php
-session_start(); // Esto debe ser lo primero, antes de cualquier salida
-
-require_once('menu.php'); // Ahora puedes incluir el menú
+session_start();
+require_once('menu.php');
 require_once('clases/Promovido.php');
 require_once('clases/Cliente.php');
 require_once('clases/Calendario.php');
 
 $cal = new Calendario;
-$cliente = new Cliente();
+$cliente = new Cliente;
+$pro = new Promovido;
 
+// Obtener datos del promovido
+$pk_promovido = $_GET['id'] ?? null;
 
-$respuesta = $cal->mostrarTodo();
+if ($pk_promovido) {
+    $respuesta = $pro->buscar($pk_promovido);
+    $datos = mysqli_fetch_assoc($respuesta);
 
-$apellido = $_GET['apellido'] ?? '';
-$resultados = [];
-
-if (!empty($apellido)) {
-    $resultados = $cliente->buscarApellido($apellido);
+    if (!$datos) {
+        $datos = []; // <-- asegúrate de que exista
+    }
 } else {
-    // Puedes cargar todos, o dejar vacío hasta que busque
-    $resultados = $cliente->mostrarTodo();
+    $datos = []; // <-- asegúrate de que exista
 }
+
+// Obtener personas
+$apellido = $_GET['apellido'] ?? '';
+$personas = !empty($apellido) ? $cliente->buscarApellido($apellido) : $cliente->mostrarTodo();
+
+// Obtener promotores activos
+$promotores = $cal->mostrarTodo(); // Asegúrate que solo devuelve activos con estatus_pro = 1
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -52,8 +61,8 @@ if (!empty($apellido)) {
 </style>
 
 <body>
-    <br><br><br><br><br><br><br>
-        <h2>Registro Datos</h2><br><br>
+    <br><br>
+        <h2>Actualizar Datos</h2><br><br>
             <form class="col-10 offset-1" method="GET" enctype="multipart/form-data">
 
         <!-- Buscar por apellido -->
@@ -63,48 +72,42 @@ if (!empty($apellido)) {
         </div>
     </form>
 
-    <form class="col-10 offset-1" action="insertar_promovido.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="fk_usuario" value="<?= $_SESSION['pk_usuario'] ?>">
+    <form class="col-10 offset-1" method="POST" action="actualizar_promovido.php">
+        <input type="hidden" name="pk_promovido" value="<?= $datos['pk_promovido'] ?? '' ?>">
 
-                <br>
-        <!-- Seleccionar persona -->
-        <br>
-        <?php if (!empty($apellido)): ?>
+
+
+            <!-- Buscar persona -->
             <div class="col-12 col-lg-6">
-                <label for="fk_persona">Seleccionar persona:</label>
-                <select class="form-control" name="fk_persona" required>
+                <label for="fk_persona" class="form-label">Persona</label>
+                <select name="fk_persona" id="fk_persona" class="form-control" required>
                     <option value="">Selecciona una persona</option>
-                    <?php while ($fila = mysqli_fetch_array($resultados)): ?>
-                        <option value="<?= $fila['pk_persona'] ?>" <?= ($_GET['fk_persona'] ?? '') == $fila['pk_persona'] ? 'selected' : '' ?>>
+                    <?php while ($fila = mysqli_fetch_array($personas)): ?>
+                        <option value="<?= $fila['pk_persona'] ?>" <?= isset($datos['fk_persona']) && $fila['pk_persona'] == $datos['fk_persona'] ? 'selected' : '' ?>>
                             <?= $fila['nombres'] . ' ' . $fila['ap_paterno'] . ' ' . $fila['ap_materno'] ?>
                         </option>
                     <?php endwhile; ?>
                 </select>
             </div>
-        <?php endif; ?>
-        <br>
 
-          <?php if (!empty($respuesta)): ?>
+            <!-- Promotor -->
             <div class="col-12 col-lg-6">
-                <label for="fk_promotor">promotor:</label>
-                <select id="fk_promotor" class="form-control" name="fk_promotor" required>
+                <label for="fk_promotor" class="form-label">Promotor</label>
+                <select name="fk_promotor" id="fk_promotor" class="form-control" required>
                     <option value="">Selecciona un promotor</option>
-                    <?php while ($fila = mysqli_fetch_array($respuesta)): ?>
-                        <option value="<?= $fila['pk_promotor'] ?>">
-                            <?= $fila['nombres'] . ' ' . $fila['ap_paterno'] . ' ' . $fila['ap_materno'] ?>
+                    <?php while ($fila = mysqli_fetch_array($promotores)): ?>
+                        <option value="<?= $fila['pk_promotor'] ?>" <?= isset($datos['fk_promotor']) && $fila['pk_promotor'] == $datos['fk_promotor'] ? 'selected' : '' ?>>
+                        <?= $fila['nombres'] . ' ' . $fila['ap_paterno'] . ' ' . $fila['ap_materno'] ?>
                         </option>
                     <?php endwhile; ?>
                 </select>
             </div>
-        <?php endif; ?>
 <br>
 <br>
         <div class="d-grid gap-2 col-6 mx-auto">
             <input class="btn btn-primary" type="submit" value="Guardar"><br><br>
             
             <a href="lista_promovido.php" class="btn btn-secondary">Cancelar</a>
-            
-            <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
         </div>
     </form>
 </body>

@@ -20,6 +20,10 @@ class Rol
      $consulta = "SELECT * FROM rol WHERE fk_tipo = '{$fk_tipo}' AND estatus_rol = 1";
     return $this->conexion->query($consulta);
     }
+    function mostrarT(){
+     $consulta = "SELECT * FROM rol";
+    return $this->conexion->query($consulta);
+    }
     
 
 }

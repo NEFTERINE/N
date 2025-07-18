@@ -69,7 +69,7 @@ class Cliente
         $respuesta = $this->conexion->query($consulta);
         return $respuesta;
     }
-    function buscarPorApellido($apellido){
+    function buscarApellido($apellido){
         $consulta = "SELECT * FROM persona 
                  WHERE ap_paterno LIKE '%{$apellido}%' 
                     OR ap_materno LIKE '%{$apellido}%'";

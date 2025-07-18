@@ -1,6 +1,6 @@
 <?php
-include('conexion.php');
-include('clases/cliente.php');
+include('clases/conexion.php');
+include('clases/Cliente.php');
 
 
     // Puedes agregar más validaciones si quieres
