@@ -50,7 +50,6 @@ p a:hover {
   margin-right: 10px;
 }
    header {
-            /* background-color: #343a40; */
             background: none;
         }
 </style>
@@ -165,14 +164,8 @@ if (isset($_SESSION['type'])) {
 </section>
 <footer>
   <div class="container">
-    <div class="redes">
-      <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
-      <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter-square"></i></a>
-      <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://web.whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
     <div class="autor">
-      <p>© 2024 Perséfone Eternity. | Todos los derechos reservados.</p>
+      <p>© 2025 SIGCE. | Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

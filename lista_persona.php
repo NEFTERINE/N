@@ -23,7 +23,6 @@ $respuesta = $promovido->mostrartodo();
             color: black;
         }
             header {
-            /* background-color: #343a40; */
             background: none;
         }
     </style>

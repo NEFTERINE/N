@@ -17,10 +17,7 @@ $usuario = new Usuario();
     <title>Agregar Nuevo Usuario</title>
 </head>
 <style>
-            header {
-            /* background-color: #343a40; */
-            background: none;
-        }
+
 </style>
 <body>
     <br><br><br><br><br><br>

@@ -99,14 +99,18 @@ $tipos = $tipo->mostrarTodo();
             <?php endif; ?>
             <br><br>
 
-        <div class="col-12">
-            <input class="btn btn-primary" type="submit" value="Guardar">
-            <br><br>
-            <a href="lista_promotor.php" class="btn btn-secondary">Cancelar</a>
 
-            <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <input class="btn btn-primary" type="submit" value="Guardar"><br><br>
+            </div>
+            <div class="col-auto">
+                <a href="lista_promotor.php" class="btn btn-secondary">Cancelar</a>
+                <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
+            
+            </div>
         </div>
-        </form>
+    </form>
 
 </body>
 </html>

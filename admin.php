@@ -26,7 +26,6 @@
     }
 
     th {
-        background-color: #333333;
         color: black;
         font-size: 16px;
         padding: 8px;
@@ -52,7 +51,6 @@
     }
 
     header {
-        /* background-color: #343a40; */
         background: none;
     }
 </style>
@@ -67,6 +65,7 @@
                         <th> </th>
                         <th>Listas</th>
                         <th>Nuevos</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +90,6 @@
                     <tr>
                         <td>promovidos</td>
                         <td><a class="a" href="lista_promovido.php">Lista de promovidos/personas</a></td>
-                        <td><a class="a" href="formulario_promovido.php"></a></td>
                     </tr>
                     <tr>
                         <td>Usuarios</td>
@@ -110,6 +108,7 @@
                             <td>promotores</td>
                             <td><a class="a" href="lista_promotor.php">Lista de promotores</a></td>
                             <td><a class="a" href="formulario_categoria.php"></a></td>
+                            <td><a class="a" href="formulario_asistencia_e.php">Asistencia de eventos</a></td>
                         </tr>
                         <tr>
                             <td>promovidos</td>

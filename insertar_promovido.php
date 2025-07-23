@@ -17,7 +17,7 @@ if (
     if ($respuesta) {
         echo "<script>
             alert('Promovido guardado correctamente');
-            window.location.href = 'lista_promovido.php';
+            window.location.href = 'lista_promovido_id.php';
         </script>";
     } else {
         echo "<script>
@@ -30,5 +30,5 @@ if (
         alert('Faltan datos por completar');
         window.location.href = 'formulario_promovido.php';
     </script>";
-}vido
+}
 ?>

@@ -23,7 +23,6 @@ $respuesta = $pro->mostrar();
             color: black;
         }
             header {
-            /* background-color: #343a40; */
             background: none;
         }
     </style>
@@ -53,39 +52,21 @@ $respuesta = $pro->mostrar();
                                     <td><?= htmlspecialchars($fila['nombre_promovido']) ?></td>
                                     <td><?= htmlspecialchars($fila['nombre_promotor']) ?></td>
                                     <?php
-                                    // Bloque de opciones para usuarios con type 5
-                                    if (isset($_SESSION['type']) && in_array($_SESSION['type'], [5])) {
-                                    ?>
-                                        <td>
-                                            <a href="editar_promovido.php?id=<?= htmlspecialchars($fila['pk_promovido']) ?>" class="btn btn-warning">Editar</a>
-                                        </td>
-                                        <td>
-                                            <?php if ($fila['estatus_pro'] == 1): ?>
-                                                <a href="eliminar_promovido.php?pk_promovido=<?= htmlspecialchars($fila['pk_promovido']) ?>" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar?')">Eliminar</a>
-                                            <?php endif; ?>
-                                        </td>
-                                    <?php
-                                    } // Cierre del if (in_array($_SESSION['type'], [5]))
+                                    // Bloque de opciones para usuarios con type 5// Cierre del if (in_array($_SESSION['type'], [5]))
                                     ?>
                                 </tr>
                         <?php
                             } // Cierre del while
-                        } else {
-                            echo '<tr><td colspan="' . (isset($_SESSION['type']) && in_array($_SESSION['type'], [5]) ? '4' : '2') . '">No hay promovidos para mostrar.</td></tr>';
+                        } 
+                        else {
+                            echo '<tr><td colspan="3">No hay promovidos registrados.</td></tr>';
                         }
                         ?>
+                            <?php endif; ?>
+
                     </tbody>
                 </table>
-                <br><br><br>
-                <?php if (isset($_SESSION['type']) && in_array($_SESSION['type'], [5])): // Solo type 5 puede ver el botón de agregar ?>
-                    <a class="btn btn-info" href="formulario_promovido.php">Agregar Nuevo Promovido</a>
-                <?php endif; ?>
-            <?php else: // Si el usuario no está logueado ?>
-                <p>Por favor, inicia sesión para ver la información de los promovidos.</p>
-            <?php endif; // Cierre del if (isset($_SESSION['pk_usuario'])) ?>
-           
-            <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
-        </div>
+</div>
     </div>
     
 </body>

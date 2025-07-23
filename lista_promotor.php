@@ -23,7 +23,6 @@ $respuesta = $prom->mostrarP();
             color: black;
         }
             header {
-            /* background-color: #343a40; */
             background: none;
         }
     </style>
@@ -44,15 +43,15 @@ $respuesta = $prom->mostrarP();
                 while ($fila = mysqli_fetch_array($respuesta)) {
                 ?>
                     <tr>
-                        <td><?= $fila['nombres']." ".$fila['ap_paterno']." ".$fila['ap_materno'] ?></td>
-                        <td><?= $fila['nom_rol'] ?></td>
-                        <td><?= $fila['nombre_coordinador'] ?></td>
+                        <td><?= $fila['nombre_promotor'] ?></td>
+                        <td><?= $fila['rol_promotor'] ?></td>
+                        <td><?= $fila['nombre_lider_coordinador'] ?></td>
                         <td>
                              <a href="editar_promotor.php?id=<?= htmlspecialchars($fila['pk_promotor']) ?>" class="btn btn-warning">Editar</a>
                         </td>
                         <td>
                             <?php
-                            if ($fila['estatus_lc'] == 1) {
+                            if ($fila['estatus_promotor'] == 1) {
                                 echo '<a href="eliminar_promotor.php?pk_promotor=' . $fila['pk_promotor'] . '" class="btn btn-danger" onclick="return confirm(\'¿Estás seguro de que deseas eliminar?\')">Eliminar</a>';
                             }
                             ?>

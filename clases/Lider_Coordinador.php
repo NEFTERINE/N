@@ -15,10 +15,51 @@ class Lider_coordinador
         $respuesta = $this->conexion->query($consulta);
         return $respuesta;
     }
-        function buscar($pk_lider_coordinador)
-    {
-        $consulta = "SELECT * FROM lider_coordinador WHERE pk_lider_coordinador = '{$pk_lider_coordinador}'";
+function buscar($pk_lider_coordinador) {
+        $pk_lider_coordinador = $this->conexion->real_escape_string($pk_lider_coordinador);
+
+        $consulta = "
+            SELECT
+                lc.pk_lider_coordinador,
+                lc.fk_persona,
+                p.nombres AS nombre_persona,               -- Asume 'nombre' es la columna del nombre en 'persona'
+                p.ap_paterno AS apellido_paterno_persona, -- Asume esta columna en 'persona'
+                p.ap_materno AS apellido_materno_persona, -- Asume esta columna en 'persona'
+                lc.fk_tipo,
+                t.Tipo AS nombre_tipo,
+                lc.fk_rol,
+                r.nom_rol,
+                lc.fk_territorio,
+                tr.municipio,
+                tr.fk_distrito,
+                tr.fk_secciones,
+                tr.fk_estado AS fk_estado,                 -- ¡OBTENEMOS fk_estado DESDE LA TABLA TERRITORIO!
+                e.nombre_estado,                           -- De la tabla 'estado'
+                lc.estatus_lc
+            FROM
+                lider_coordinador lc
+            LEFT JOIN
+                persona p ON lc.fk_persona = p.pk_persona  -- Asegúrate de que 'persona' y 'pk_persona' son correctos
+            LEFT JOIN
+                tipo t ON lc.fk_tipo = t.pk_tipo
+            LEFT JOIN
+                rol r ON lc.fk_rol = r.pk_rol
+            LEFT JOIN
+                territorio tr ON lc.fk_territorio = tr.pk_territorio -- Unimos con territorio
+            LEFT JOIN
+                estado e ON tr.fk_estado = e.pk_estado     -- ¡Y luego unimos territorio con estado!
+            WHERE
+                lc.pk_lider_coordinador = '{$pk_lider_coordinador}'
+            LIMIT 1;
+        ";
+
         $respuesta = $this->conexion->query($consulta);
+
+        if ($respuesta === false) {
+            error_log("Error en la consulta buscar de Lider_coordinador: " . $this->conexion->error);
+            return false;
+        }
+
         return $respuesta;
     }
     function mostrarTodo()

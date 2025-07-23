@@ -45,10 +45,7 @@ if (!empty($apellido)) {
         rel="stylesheet">
 </head>
 <style>
-            header {
-            /* background-color: #343a40; */
-            background: none;
-        }
+
 </style>
 
 <body>
@@ -99,12 +96,15 @@ if (!empty($apellido)) {
         <?php endif; ?>
 <br>
 <br>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <input class="btn btn-primary" type="submit" value="Guardar"><br><br>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <input class="btn btn-primary" type="submit" value="Guardar"><br><br>
+            </div>
+            <div class="col-auto">
+                <a href="lista_promovido.php" class="btn btn-secondary">Cancelar</a>
+                <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
             
-            <a href="lista_promovido.php" class="btn btn-secondary">Cancelar</a>
-            
-            <p class="p">¿La persona ocupa registrarse? <a href="formulario_datos_P.php">registrar</a></p>
+            </div>
         </div>
     </form>
 </body>

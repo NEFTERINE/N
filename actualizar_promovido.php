@@ -17,7 +17,7 @@ if (
     if ($resultado) {
         echo "<script>
                 alert('Promovido actualizado correctamente.');
-                window.location.href = 'lista_promovido.php';
+                window.location.href = 'lista_promovido_id.php';
               </script>";
     } else {
         echo "<script>

@@ -26,7 +26,6 @@ $respuesta = $usuario->mostrarTodo_n();
         }
 
         header {
-            /* background-color: #343a40; */
             background: none;
         }
     </style>

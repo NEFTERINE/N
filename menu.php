@@ -3,8 +3,21 @@
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+
+//     session_start(); // Si aún no está allí
+
+// // Si el usuario NO está logueado, redirige a la página de inicio de sesión
+// if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+//     header("Location: login.php");
+//     exit; // Detiene la ejecución del script
+// }
 }
 
+require_once('clases/conexion.php');
+$conexion = new Conexion();
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,9 +53,9 @@ if (session_status() === PHP_SESSION_NONE) {
                             echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Inicio</a></li>';
 
                             // *** ELIMINA LAS SIGUIENTES LÍNEAS COMPLETAMENTE ***
-                            // if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3])) {
-                            //     echo '</ul></li><li class="nav-item"><a class="nav-link" href="admin.php"></a></li></ul>';
-                            // }
+                            if (isset($_SESSION['type']) && in_array($_SESSION['type'], [5])) {
+                                echo '</li><li class="nav-item"><a class="nav-link" href="lista_asistencia_e.php"> Asistencia </a></li>';
+                            }
                             // else if (isset($_SESSION['type']) && in_array($_SESSION['type'], [4, 5])) {
                             //     echo '</ul></li><li class="nav-item"><a class="nav-link" href="admin.php"></a></li></ul>';
                             // }
@@ -56,7 +69,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             // Si el usuario está logueado
                             echo '<li class="nav-item"><a class="nav-link" href="perfil.php"><i class="fa-solid fa-user" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil"></i></a></li>';
                             // Mostrar el link para administrar si es un usuario administrador (este es el correcto)
-                            if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3, 5])) {
+                            if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3, 4, 5])) {
                                 echo '<li class="nav-item"><a class="nav-link" href="admin.php"><i class="fa-solid fa-gear" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Administración"></i></a></li>';
                             }
                         } else {

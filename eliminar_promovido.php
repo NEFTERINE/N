@@ -11,18 +11,18 @@ if ($pk_promovido) {
     if ($respuesta) {
         echo "<script>
             alert('Promovido eliminado');
-            location.href = 'lista_promovido.php';
+            location.href = 'lista_promovido_id.php';
         </script>";
     } else {
         echo "<script>
             alert('Error al eliminar');
-            location.href = 'lista_promovido.php';
+            location.href = 'lista_promovido_id.php';
         </script>";
     }
 } else {
     echo "<script>
         alert( no válido');
-        location.href = 'lista_promovido.php';
+        location.href = 'lista_promovido_id.php';
     </script>";
 }
 ?>

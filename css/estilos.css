@@ -12,16 +12,24 @@ nav ul li a {
     white-space: nowrap;
 
 }
+body {
+    margin: 0;
+    font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #f8f9fa;
+    color: #007bff;
+}
 
 nav ul li a:hover {
     color: #ddd;
     text-decoration: underline;
-    /* font-size: 25px; igual que el normal */
 }
 
 /* HACER RESPONSIVO EL NAVBAR */
 .menu {
-    background: #525050;
+    background: #007bff;
     height: auto; /* permite altura dinámica */
     width: 100%;
     padding: 10px 0;
@@ -89,23 +97,16 @@ nav ul li a:hover {
             color: #000;
         }
         header {
-            background-color: #343a40;
+            background-color: #007bff;
             background: none;
         }  
-    body{
-    font-family: 'Oswald', sans-serif;
-    margin: 0;
-    }
+
     #nosotros,#componentes,#blog{
         background-color: rgb(233, 233, 233);
         padding: 30px 0 90px 0;
     }
-    /* #videos, #videojuegos{
-        padding: 10px 0 170px 0;
-    } */
-    header{
-        /* background: linear-gradient( rgba(148, 0, 0, 0.62),rgba(134, 132, 132, 0.5)),url(img/portada.jpg); */
-        background-size: cover;
+
+    header{background-size: cover;
         display: inline-block;
         width: 100%;
     }
@@ -113,58 +114,6 @@ nav ul li a:hover {
         display: flex;
         justify-content: space-between;
     }
-    /* .container{
-        display: flex;
-        justify-content: space-between;
-    } */
-    /* ul{
-        display: flex;
-    }
-    
-    header ul{
-        display: flex;
-    }
-    ul li{
-        list-style: none;
-        margin: 15px;
-    }
-    header ul li{
-        list-style: none;
-        margin: 15px;
-        
-    } */
-    .logo{
-        /* color: rgba(255, 136, 136, 0.835); */
-        /* font-size: 40px;
-        font-weight: 500;
-        margin-top: 22px; */
-      
-    
-    }
-    /* .container{
-        max-width: 1800px;
-        width: 95%;
-        margin: auto;
-    } */
-    /* nav ul li a{
-        color:white;
-        font-size: 25px;
-        font-weight: 200;
-        text-transform: uppercase;
-        text-decoration: none;
-    }
-    nav ul li a:hover{
-        color:  rgba(170, 98, 98, 0.835);
-
-        font-size: 26px;
-    } */
-    /* .menu{
-        background: #525050;
-        height: 85px;
-        width: 100%;
-        margin-bottom: 15px;
-        display: flex;
-    } */
     #title-container-flex{
         display: flex;
         justify-content: center;
@@ -190,7 +139,7 @@ nav ul li a:hover {
     .title-container a, #nosotros a,#blog a,#contacto input[type="submit"]{
         font-size: 20px;
         color: black;
-        background:  #252525;
+        background:  #007bff;
         padding: 14px 24px;
         width: 128px;
         display: inline-block;
@@ -201,7 +150,7 @@ nav ul li a:hover {
         text-align: center;
     }
     .title-container a:hover ,#blog a:hover,#nosotros a:hover {
-    background-color: #272122c4;
+    background-color: #007bff;
     }
     /* /SECCION NOSOTROS/ */
     h3{
@@ -267,19 +216,9 @@ nav ul li a:hover {
         border-radius: 10px;
         margin-bottom: 40px;
         position: block;
-        /* background: linear-gradient( rgba(101, 0, 0, 0.209),rgba(236, 129, 129, 0.733));
-        box-shadow: 0 12px 30px 0 rgba(100, 1, 1, 0.812); */
         display: flex;
         justify-content: center; /* Centra horizontalmente */
         align-items: center;
-    }
-    .photo{
-        /* width: 100%;
-        height: 250px; */
-        background-size: cover;
-
-        max-width: 100%; /* Evita que la imagen se salga del contenedor */
-        height: auto;
     }
     .componente h4{
         font-size: 30px;
@@ -290,7 +229,7 @@ nav ul li a:hover {
     .componente p{
         margin-bottom: 20px;
         height: 70px;
-        color: rgb(44,44,44);
+        color: rgb(48, 45, 245);
         font-size: 18px;
         text-align: justify;
     }
@@ -367,13 +306,6 @@ nav ul li a:hover {
         color: blue;
     }
     /*CONTACTO*/
-    footer{
-        /* background: #5D1B23; */
-        padding: 40px 0;
-        text-align: center;
-        margin-top: 40px;
-        
-    }
     footer .container{
         display: flex;
         justify-content: center;
@@ -396,17 +328,8 @@ nav ul li a:hover {
 
     /* NUEVO */
     /* General Styles */
-body {
-    font-family: 'Oswald', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-}
 
-/* Ajustes para imágenes */
-.card-img-top {
-    max-height: 250px;
-    object-fit: cover;
-}
+
 
 /* Espaciado entre productos */
 .card-body {
@@ -427,22 +350,23 @@ body {
 
 /* Diseño en el header */
 header {
-    background-color: #343a40;
     padding: 10px 0;
     color: #fff;
 }
 
 h2 {
     font-size: 2rem;
-    color: #333;
-    /* text-transform: uppercase; */
+    color: #007bff;
 }
 
 /* Estilo para el footer */
 footer {
-    background-color: #343a40;
+    background-color: #007bff;
     color: #fff;
     padding: 40px 0;
+        padding: 40px 0;
+        text-align: center;
+        margin-top: 40px;
 }
 
 /* Iconos en footer */
@@ -450,7 +374,6 @@ footer .fa {
     color: white;
     font-size: 2rem;
     margin: 0 15px;
-    /* transition: color 0.3s; */
 }
 
 footer .fa:hover {

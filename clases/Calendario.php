@@ -34,4 +34,9 @@ class Calendario
                      JOIN persona p ON prom.fk_persona = p.pk_persona";
         return $this->conexion->query($consulta);
     }
+    function mostrarT(){
+        $consulta = "SELECT * FROM c_eventos";
+        $respuesta = $this->conexion->query($consulta);
+        return $respuesta;
+    }
 }

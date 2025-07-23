@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once('menu.php'); // Asegúrate de incluir el menú
 // ... tus includes y session_start() ...
 require_once('clases/Promotor.php'); // Asegúrate de incluir la clase Promotor
 
@@ -20,8 +22,17 @@ foreach ($datos_promovidos_para_grafica as $item) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+<style>
+  .grafica-pequeña {
+    max-width: 1250px;
+    height: auto;
+    margin: auto;
+  }
+</style>
 
-<canvas id="promovidosChart"></canvas>
+<div class="grafica-pequeña">
+  <canvas id="promovidosChart"></canvas>
+</div>
 <script>
     // Usa los datos preparados por PHP
     const labelsPromovidos = <?php echo json_encode($labels_promovidos); ?>;

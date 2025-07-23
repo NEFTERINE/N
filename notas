@@ -1,5 +1,54 @@
 <!--codijos descartados o al azar -->
 
+<!-- Parece que quieres poner un espacio entre los botones "editar" y "volver" en tu código. Entiendo que ahora mismo están muy pegados.
+
+Para separarlos, puedes usar una clase de margen de Bootstrap. Es la forma más sencilla y recomendada, ya que usas Bootstrap en tu proyecto.
+
+Cómo agregar espacio entre los botones
+En el código que me mostraste, los botones "editar" y "volver" se ven así:
+
+HTML
+
+<div class="align-button-top ">
+    <div class="col-auto">
+        <a href="editar_asistencia_e.php" class="btn btn-secondary">editar</a> <br><br>
+    </div>
+    <div class="col-auto">
+        <a href="lista_asistencia.php" class="btn btn-secondary">volver</a>
+    </div>
+</div>
+Para añadir un espacio, simplemente agrega la clase me-2 al botón "editar".
+
+El me significa "margin-end" (margen al final), que en una escritura de izquierda a derecha (como el español) se traduce en un margen a la derecha. El 2 es un tamaño predefinido de Bootstrap para el margen.
+
+Así es como quedaría el código:
+
+HTML
+
+<div class="align-button-top ">
+    <div class="col-auto">
+        <a href="editar_asistencia_e.php" class="btn btn-secondary me-2">editar</a> <br><br>
+        </div>
+    <div class="col-auto">
+        <a href="lista_asistencia.php" class="btn btn-secondary">volver</a>
+    </div>
+</div>
+Opciones de espacio con me-
+Puedes ajustar el número de me- para cambiar el tamaño del espacio:
+
+me-1: Espacio muy pequeño.
+
+me-2: Espacio pequeño (recomendado para empezar).
+
+me-3: Espacio mediano.
+
+me-4: Espacio grande.
+
+me-5: Espacio muy grande.
+
+Prueba con me-2 y si necesitas más o menos, puedes cambiar el número. -->
+
+
 <!-- <form class="col-10 offset-1" method="POST" action="insertar_lider_coordinador.php">
     /*Persona (vía GET antes, pero aquí la recibes desde la recarga con GET y la guardas como POST)*/
     <?php if (!empty($apellido)): ?>

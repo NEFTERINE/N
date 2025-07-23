@@ -35,7 +35,7 @@ class Promotor
                      WHERE pr.pk_promotor = '{$pk_promotor}'";
         return $this->conexion->query($consulta);
     }
-    
+
     function actualizar($pk_promotor, $fk_persona, $fk_lider_coordinador, $fk_rol)
     {
         $consulta = "UPDATE promotor SET fk_persona='{$fk_persona}', fk_lider_coordinador='{$fk_lider_coordinador}', fk_rol='{$fk_rol}' WHERE pk_promotor='{$pk_promotor}'";
@@ -48,25 +48,30 @@ class Promotor
         $respuesta = $this->conexion->query($consulta);
         return $respuesta;
     }
-    function buscarPorLC($fk_lider_coordinador) 
+    function buscarPorLC($fk_lider_coordinador)
     {
         $consulta = "SELECT * FROM promotor WHERE fk_lider_coordinador='{$fk_lider_coordinador}' AND estatus_promotor=1";
         $resultado = $this->conexion->query($consulta);
         return $resultado;
     }
-    public function mostrarP() {
-    $consulta = "SELECT pr.pk_promotor, p.nombres, p.ap_paterno, p.ap_materno, r.nom_rol, lc.pk_lider_coordinador, lc.estatus_lc,
-                (SELECT CONCAT(p2.nombres, ' ', p2.ap_paterno, ' ', p2.ap_materno)
-                 FROM persona p2 
-                 WHERE p2.pk_persona = lc.fk_persona) AS nombre_coordinador
-            FROM promotor pr
-            JOIN persona p ON pr.fk_persona = p.pk_persona
-            JOIN lider_coordinador lc ON pr.fk_lider_coordinador = lc.pk_lider_coordinador
-            JOIN rol r ON lc.fk_rol = r.pk_rol";
-        $resultado = $this->conexion->query($consulta);
-        return $resultado;
+    function mostrarP()
+    {
+        $consulta = "SELECT 
+    pr.pk_promotor,
+    CONCAT(promo.nombres, ' ', promo.ap_paterno, ' ', promo.ap_materno) AS nombre_promotor,
+    r.nom_rol AS rol_promotor,
+    CONCAT(lider.nombres, ' ', lider.ap_paterno, ' ', lider.ap_materno) AS nombre_lider_coordinador,
+    pr.estatus_promotor
+FROM promotor pr
+JOIN persona promo ON pr.fk_persona = promo.pk_persona
+JOIN rol r ON pr.fk_rol = r.pk_rol
+JOIN lider_coordinador lc ON pr.fk_lider_coordinador = lc.pk_lider_coordinador
+JOIN persona lider ON lc.fk_persona = lider.pk_persona
+                WHERE pr.estatus_promotor = 1";
+
+        return $this->conexion->query($consulta);
     }
-    
+
 
     // function buscarPorPersona($fk_persona)
     // {
@@ -77,8 +82,9 @@ class Promotor
 
     // Dentro de la clase Promotor (o donde sea que manejes las consultas relacionadas)
 
-public function cPPromotor() {
-    $consulta = "SELECT
+    public function cPPromotor()
+    {
+        $consulta = "SELECT
                      P.nombres AS nombre_promotor_nombres,
                      P.ap_paterno AS nombre_promotor_ap_paterno,
                      COUNT(PR.pk_promovido) AS total_promovidos
@@ -93,22 +99,63 @@ public function cPPromotor() {
                  ORDER BY
                      total_promovidos DESC"; // Ordenar por la cantidad, de mayor a menor
 
-    // Asegúrate de que $this->conexion es tu objeto de conexión a la base de datos
-    $resultado = mysqli_query($this->conexion, $consulta);
+        // Asegúrate de que $this->conexion es tu objeto de conexión a la base de datos
+        $resultado = mysqli_query($this->conexion, $consulta);
 
-    $datos_grafica = [];
-    if ($resultado) {
-        while ($fila = mysqli_fetch_assoc($resultado)) {
-            $datos_grafica[] = [
-                'promotor_nombre_completo' => $fila['nombre_promotor_nombres'] . ' ' . $fila['nombre_promotor_ap_paterno'],
-                'cantidad' => (int)$fila['total_promovidos'] // Convertir a entero
-            ];
+        $datos_grafica = [];
+        if ($resultado) {
+            while ($fila = mysqli_fetch_assoc($resultado)) {
+                $datos_grafica[] = [
+                    'promotor_nombre_completo' => $fila['nombre_promotor_nombres'] . ' ' . $fila['nombre_promotor_ap_paterno'],
+                    'cantidad' => (int)$fila['total_promovidos'] // Convertir a entero
+                ];
+            }
+        } else {
+            error_log("Error al obtener promovidos por promotor: " . mysqli_error($this->conexion));
         }
-    } else {
-        error_log("Error al obtener promovidos por promotor: " . mysqli_error($this->conexion));
+        return $datos_grafica;
     }
-    return $datos_grafica;
-}
 
+    function buscarPromotorPorId($pk_promotor)
+    {
+        $consulta = "
+            SELECT
+                pr.pk_promotor,
+                pr.fk_persona,
+                pr.fk_lider_coordinador,
+                pr.fk_rol,
+                pr.estatus_promotor,
+                p.nombres AS nombre_persona,
+                p.ap_paterno AS ap_paterno_persona,
+                p.ap_materno AS ap_materno_persona,
+                r.nom_rol AS nombre_rol,
+                -- Obtener el nombre completo del líder/coordinador
+                (SELECT CONCAT(pl.nombres, ' ', pl.ap_paterno, ' ', pl.ap_materno)
+                 FROM persona pl
+                 WHERE pl.pk_persona = lc.fk_persona) AS nombre_lider_coordinador,
+                lc.fk_tipo AS fk_tipo_lider_coordinador -- Para filtrar los roles si es necesario
+            FROM
+                promotor pr
+            LEFT JOIN
+                persona p ON pr.fk_persona = p.pk_persona
+            LEFT JOIN
+                lider_coordinador lc ON pr.fk_lider_coordinador = lc.pk_lider_coordinador
+            LEFT JOIN
+                rol r ON pr.fk_rol = r.pk_rol
+            WHERE
+                pr.pk_promotor = ?
+            LIMIT 1;
+        ";
+        $stmt = $this->conexion->prepare($consulta);
+        if ($stmt === false) {
+            error_log("Error al preparar la consulta buscarPromotorPorId: " . $this->conexion->error);
+            return null;
+        }
+        $stmt->bind_param("i", $pk_promotor);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $datos = $resultado->fetch_assoc();
+        $stmt->close();
+        return $datos;
+    }
 }
-?>

@@ -25,7 +25,7 @@ $resouesta = $cliente->insertar_C_U($nombres, $a_paterno, $a_materno, $edad, $fe
 if ($resouesta) {
 
     echo "<script>alert('Persona guardada.');
-          window.location.href = 'admin.php';</script>";
+          window.location.href = 'lista_persona.php';</script>";
 } else {
     echo "<script>alert('Error al guardar persona.');
           window.location.href = 'formulario_datos_P.php';</script>";

@@ -23,7 +23,6 @@ $respuesta = $lider->mostrarL();
             color: black;
         }
             header {
-            /* background-color: #343a40; */
             background: none;
         }
     </style>
@@ -50,7 +49,7 @@ $respuesta = $lider->mostrarL();
                         <td><?= $fila['nom_rol'] ?></td>
                         <td><?= $fila['municipio']?></td>
                         <td>
-                            <a href="editar_lider_coordinador.php?pk_lider_coordinador=<?= $fila['pk_lider_coordinador'] ?>" class="btn btn-warning">Editar</a>
+                            <a href="editar_lider.php?pk_lider_coordinador=<?= $fila['pk_lider_coordinador'] ?>" class="btn btn-warning">Editar</a>
                         </td>
                         <td>
                             <?php
