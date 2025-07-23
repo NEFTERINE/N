@@ -1,6 +1,7 @@
 <?php 
+session_start();
  // Asegúrate de iniciar la sesión si no lo haces en 'menu.php'
-$agregar = isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3, 5]);
+$agregar = isset($_SESSION['type']) && in_array($_SESSION['type'], [ 2, 3, 5]);
 
 require_once('menu.php');
 require_once('clases/Calendario.php');
@@ -25,6 +26,7 @@ if ($datos_promovidos_para_grafica) {
         $data_promovidos[] = $item['cantidad'];
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -99,8 +101,7 @@ if ($datos_promovidos_para_grafica) {
     </style>
 </head>
 <body>
-    <?php require_once('menu.php'); ?>
-
+  
     <div class="container main-content-container">
         <div class="row justify-content-center w-100">
             <div class="col-12">
@@ -120,12 +121,11 @@ if ($datos_promovidos_para_grafica) {
                     <div class="wrapper">
                         <?php if ($agregar): ?>
                             <div class="modal fade" id="modalAgregarEvento" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog ">
                                     <form id="formEvento">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Nuevo Evento</h5>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
                                             <div class="modal-body">
                                                 <input type="hidden" id="fecha">
@@ -165,8 +165,9 @@ if ($datos_promovidos_para_grafica) {
                                                 <?php endif; ?>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <a href="calendario_grafica.php" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
                                                 <button type="submit" class="btn btn-primary">Guardar</button>
+                                                
                                             </div>
                                         </div>
                                     </form>
