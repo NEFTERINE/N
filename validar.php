@@ -1,73 +1,60 @@
-<html><title>SIGCE| Login</title></html>
+<html>
+<title>SIGCE| Login</title>
+</html>
 
 <?php
+session_start();
 
 include('clases/Usuario.php');
-$usuario= new Usuario;
+$usuario = new Usuario();
 
-$correo= $_POST['correo'];
-$contraseña= $_POST['contraseña'];
+$correo = isset($_POST['correo']) ? $_POST['correo'] : '';
+$contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
 
-$resultado=$usuario-> validar($correo, $contraseña);
-$num_rows= mysqli_num_rows($resultado);
+// Validar credenciales usando el método modificado
+// Ahora $datos_usuario contendrá el array de datos del usuario si la validación es exitosa, o false si no lo es.
+$datos_usuario = $usuario->validar($correo, $contraseña);
 
-$datos= mysqli_fetch_assoc($resultado);
-
-
-if ($num_rows <= 0) {
-    echo "<script>
-        alert('No existe el usuario');
-        location.href= 'login.php';
-    </script>";
-} else {
-    session_start();
-    $_SESSION['pk_usuario'] = $datos['pk_usuario'];
-    $_SESSION['type'] = $datos['type'];
+// Comprobamos si $datos_usuario NO es false (es decir, la validación fue exitosa y es un array)
+if ($datos_usuario !== false) {
+    // Los datos ya están en $datos_usuario, no necesitamos mysqli_fetch_assoc() aquí
+    $_SESSION['pk_usuario'] = $datos_usuario['pk_usuario'];
+    $_SESSION['type'] = $datos_usuario['type']; // <--- Esto ahora se establecerá correctamente
     $_SESSION['correo'] = $correo;
-    // echo "Tipo de usuario: " . ($_SESSION['type'] ?? 'no definido');
 
-    // $_SESSION['contrasena'] = $contrasena;
-
-    // Redirección según tipo de usuario
+    // Redirección segura usando header('Location')
     switch ($_SESSION['type']) {
         case 1:
-            echo "<script>
-                alert('Bienvenido');
-                location.href= 'index.php';
-            </script>";
+            $_SESSION['mensaje_bienvenida'] = 'Bienvenido';
+            header('Location: index.php');
+            exit();
             break;
         case 2:
-            echo "<script>
-                alert('Bienvenido lider');
-                location.href= 'index.php';
-            </script>";
+            header('Location: index.php'); // Redirige a la página principal del líder
+            exit();
             break;
         case 3:
-            echo "<script>
-                alert('Bienvenido coordinador');
-                location.href= 'index.php';
-            </script>";
+            header('Location: index.php'); // Redirige a la página principal del coordinador
+            exit();
             break;
         case 4:
-            echo "<script>
-                alert('Bienvenido representante de casilla');
-                location.href= 'index.php';
-            </script>";
+            header('Location: index.php'); // Redirige a la página principal del representante de casilla
+            exit();
             break;
         case 5:
-            echo "<script>
-                alert('Bienvenido promotor');
-                location.href= 'index.php';
-            </script>";
+            header('Location: index.php'); // Redirige a la página principal del promotor
+            exit();
             break;
         default:
-            echo "<script>
-                alert('Tipo de usuario desconocido');
-                location.href= 'login.php';
-            </script>";
+            $_SESSION['error_login'] = 'Tipo de usuario desconocido.';
+            header('Location: login.php');
+            exit();
             break;
     }
+} else {
+    // Usuario no existe o contraseña incorrecta
+    $_SESSION['error_login'] = 'Correo o contraseña incorrectos.';
+    header('Location: login.php');
+    exit();
 }
 ?>
-
-

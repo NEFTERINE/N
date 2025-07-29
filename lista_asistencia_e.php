@@ -69,7 +69,7 @@ if (isset($_GET['id_evento']) && is_numeric($_GET['id_evento'])) {
 </head>
 <body>
     <div class="container">
-        <div class="col-12"> <br><br><br><br><br><br><br>
+        <div class="col-12"> <br><br><br><br>
             <h2 class="titulo">Asistentes del Evento: <?= htmlspecialchars($nombre_del_evento) ?></h2><br><br>
             
             <?php if (empty($asistentes_del_evento)): ?>

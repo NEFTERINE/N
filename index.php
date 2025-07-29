@@ -23,7 +23,7 @@ require_once('menu.php'); // Tu menú superior
     <style>
         /* Estilos específicos para esta página */
         body {
-            padding-top: 70px; /* Espacio para el menú fijo */
+            padding-top: 10px; /* Espacio para el menú fijo */
             background-color: #f8f9fa; /* Fondo claro */
         }
         .hero-section {
@@ -87,7 +87,9 @@ require_once('menu.php'); // Tu menú superior
         <div class="container">
             <?php if (isset($_SESSION['pk_usuario'])): ?>
                 <h1>¡Bienvenido de nuevo, <?= htmlspecialchars($datos_usuario['nombres'] ?? 'Usuario') ?>!</h1>
+                <div class="container">
                 <p>Estamos listos para hacer la diferencia.</p>
+                <div class="container">
                 <?php
                 // Redirecciona al panel de administración si tienen los permisos
                 if (isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3, 4, 5])) {
@@ -96,11 +98,15 @@ require_once('menu.php'); // Tu menú superior
                     echo '<a href="perfil.php" class="btn btn-light btn-lg mt-3">Ver mi Perfil</a>';
                 }
                 ?>
+                </div>
+                </div>
             <?php else: ?>
+                <div >
                 <h1>Potencia tu Gestión Política y Social</h1>
                 <p>Conecta, organiza y moviliza a tus equipos de líderes y promotores de manera eficiente.</p>
                 <a href="registro.php" class="btn btn-light btn-lg me-3">Regístrate Gratis</a>
                 <a href="login.php" class="btn btn-outline-light btn-lg">Iniciar Sesión</a>
+                </div>
             <?php endif; ?>
         </div>
     </div>
@@ -166,10 +172,13 @@ require_once('menu.php'); // Tu menú superior
 
     <div class="container cta-section bg-light py-5">
         <h2 class="mb-4">¿Listo para transformar tu organización?</h2>
+        <div class="container">
         <p class="lead mb-4">Únete a nuestra plataforma y lleva tu gestión al siguiente nivel.</p>
+        </div>
         <?php if (!isset($_SESSION['pk_usuario'])): ?>
-            <a href="registro.php" class="btn btn-primary btn-lg me-3">Regístrate Ahora</a>
-            <a href="contacto.php" class="btn btn-secondary btn-lg">Contáctanos</a>
+            <div class="container">
+            <a href="register.php" class="btn btn-primary btn-lg me-3">Regístrate Ahora</a>
+            </div>
         <?php else: ?>
             <p>Ya estás dentro. Explora las opciones disponibles.</p>
         <?php endif; ?>
@@ -178,7 +187,7 @@ require_once('menu.php'); // Tu menú superior
     <footer>
         <div class="container">
             <div class="autor">
-                <p>© 2025 Sistema Integral DE Gestion de Compañia Electoral. | Todos los derechos reservados.</p>
+                <p>© 2025 Sistema Integral de Gestion de Compañia Electoral. | Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

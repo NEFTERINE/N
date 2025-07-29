@@ -30,7 +30,7 @@ $respuesta = $pro->mostrar();
 <body>
     <div class="container">
         <div class="col-8 offset-2">
-            <br><br><br><br><br><br><br>
+            <br><br><br><br>
             <h2 class="titulo">Gestión de Promovidos</h2><br><br>
   <?php if (isset($_SESSION['pk_usuario'])): // Mostrar tabla solo si el usuario está logueado ?>
             <table class="table table-hover">

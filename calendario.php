@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $agregar = isset($_SESSION['type']) && in_array($_SESSION['type'], [2, 3, 5]);
 

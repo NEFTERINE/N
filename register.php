@@ -75,19 +75,13 @@ body{
     </div>
 
 
-<footer>
-<div class="container">
-    <div class="redes">
-        <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
-        <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter-square"></i></a>
-        <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://web.whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-    <div class="autor">
-        <p>© 2024 Perséfone Eternity. | Todos los derechos reservados.</p>
-    </div>
-</div>
-</footer>
+   <footer>
+        <div class="container">
+            <div class="autor">
+                <p>© 2025 Sistema Integral de Gestion de Compañia Electoral. | Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="owl/owl.carousel.min.js"></script>

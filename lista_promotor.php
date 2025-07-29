@@ -30,7 +30,7 @@ $respuesta = $prom->mostrarP();
 <body>
     <div class="container">
         <div class="col-8 offset-2">
-            <br><br><br><br><br><br><br>
+            <br><br><br><br>
             <h2 class="titulo">Gestión de Promotor</h2><br><br>
             <table class="table table-hover">
                 <tr>

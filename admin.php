@@ -55,7 +55,7 @@
     }
 </style>
 
-<body><br><br><br><br><br><br><br>
+<body><br><br><br><br>
     <div class="container">
         <div class="col-8 offset-2">
             <h2 class="titulo">Administración</h2>
@@ -96,13 +96,6 @@
                         <td><a class="a" href="lista_usuarios.php">Lista de Usuarios</a></td>
                         <td><a class="a" href="formulario_persona.php">Agregar Nuevo Usuario</a></td>
                     </tr>';
-                        } else if (isset($_SESSION['type']) && $_SESSION['type'] == 4) {
-                            echo    '<tr>
-                            <td>casillas</td>
-                            <td><a class="a" href="lista_casilla.php">Lista de representantes de casilla</a></td>                        <td><a class="a" href="formulario_Lider_coordinador.php">Agregar uno nuevo promotor</a></td>
-                            <td><a class="a" href="formulario_Lider_coordinador.php">Agregar uno nuevo representante</a></td>
-                            <td><a class="a" href="lista_entregados.php"></a></td>
-                        </tr>';
                         } else if (isset($_SESSION['type']) && $_SESSION['type'] == 5) {
                             echo  ' <tr>
                             <td>promotores</td>

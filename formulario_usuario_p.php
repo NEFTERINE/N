@@ -30,10 +30,10 @@ $usuario = new Usuario();
         <label>Contraseña:</label><br>
         <input class="form-control" type="password" name="contraseña" required><br>
 
-        <div class="form-check mb-3">
+        <!-- <div class="form-check mb-3">
         <label for="">Ver contraseña</label>
         <input class="form-check-input" type="checkbox" onclick="contraseña.type = this. checked ? 'text' : 'password'">
-        </div>
+        </div> -->
 
         <label>Tipo de Usuario:</label><br>
         <select name="type" class="form-control" required>
@@ -41,7 +41,6 @@ $usuario = new Usuario();
             <option value="2">Líder</option>
             <option value="3">Coordinador</option>
             <option value="5">Promotor</option>
-            <option value="4">Representante de Casilla</option>
         </select><br><br>
 
         <input type="hidden" name="pk_persona" value="<?= $_SESSION['pk_persona'] ?>">

@@ -24,12 +24,17 @@ foreach ($datos_promovidos_para_grafica as $item) {
 </head>
 <style>
   .grafica-pequeña {
-    max-width: 1250px;
+    max-width: 1200px;
     height: auto;
     margin: auto;
   }
+  button {
+    margin: 20px;
+  }
+  
 </style>
 
+<button class="btn btn-primary" onclick="window.location.href='index.php';">Volver</button>
 <div class="grafica-pequeña">
   <canvas id="promovidosChart"></canvas>
 </div>

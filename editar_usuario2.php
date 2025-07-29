@@ -38,10 +38,11 @@ $datos = mysqli_fetch_assoc($respuesta);
         <label for="">Contraseña:</label><br>
         <input value="<?=$datos['contraseña'] ?>" class="form-control" type="password" name="contraseña" required><br>
         
-        <div class="form-check mb-3">
+    <!-- metodo para visualizar contraseña -->
+        <!-- <div class="form-check mb-3">
         <label for="">Ver contraseña</label>
         <input class="form-check-input" type="checkbox" onclick="contraseña.type = this. checked ? 'text' : 'password'">
-        </div>
+        </div> -->
 
         <label for="">Tipo de Usuario:</label><br>
         <select name="type" class="form-control" required>

@@ -13,11 +13,6 @@ if (session_status() === PHP_SESSION_NONE) {
 // }
 }
 
-require_once('clases/conexion.php');
-$conexion = new Conexion();
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
